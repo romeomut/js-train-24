@@ -1,3 +1,4 @@
+console.clear()
 console.log("Завдання: 1 ==============================");
 
 // Функція task1 не приймає жодних аргументів
@@ -13,14 +14,26 @@ function task1() {
     // За допомогою setTimeout ми симулюємо затримку timeout, яка виникає при роботі з асинхронними джерелами даних
     // Якщо об'єкт не пустий, ми викликаємо resolve з data
     // Якщо об'єкт пустий, ми викликаємо reject з новим об'єктом Error("Об'єкт пустий")
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (Object.keys(data).length === 0) {
+                reject(new Error("Об'єкт пустий"))
+            }else{
+                resolve(data)
+            }
+        }, timeout);
+    })
   }
 
   // Ми викликаємо getData з об'єктом { name: "John", age: 30, city: "New York" } і часом очікування 2000
-
+  getData({ name: "John", age: 30, city: "New York" })
   // Ми обробляємо дані, повернуті промісом
   // У разі успіху виводимо в консоль дані
+  .then((result) => console.log(result))
   // У разі помилки виводимо повідомлення помилки
+  .catch((error) => console.log(error))
   // Незалежно від того, завершилось виконання проміса успіхом чи ні виводимо в консоль "Завдання 1 завершено"
+  .finally(() => console.log("Завдання 1 завершено"))
 }
 
 // Викликаємо функцію task1

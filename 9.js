@@ -1,3 +1,4 @@
+console.clear()
 console.log("Завдання: 9 ==============================");
 
 function task9() {
@@ -7,6 +8,13 @@ function task9() {
   // Викликаємо функцію fetchWithError
   // Якщо проміс виконаний успішно виводимо в консоль дані які він повертає
   // Якщо проміс виконаний з помилкою виводимо в консоль помилку
+  const fetchWithError = () => {
+    const errorMessage = new Error("Помилка при з'єднанні з сервером")
+    return Promise.reject(errorMessage)
+  }
+  fetchWithError()
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error))
 }
 
 // Викликаємо функцію task10

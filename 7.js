@@ -1,3 +1,4 @@
+console.clear()
 console.log("Завдання: 7 ==============================");
 
 // Створюємо функцію task7, яка використовує setInterval та проміси.
@@ -12,6 +13,24 @@ function task7() {
   // Використовуємо then для обробки зарезолвленого проміса, та виводимо в консоль `Проміс зарезолвився з значенням: ${value}` .
   // Якщо проміс відхилено, обробляємо помилку за допомогою catch, та виводимо в консоль `Проміс відхилився з помилкою: ${error}`.
   // Використовуємо finally для виконання дій після завершення проміса, незалежно від його статусу, та виводимо в консоль "Проміс завершено".
+  
+  return new Promise((resolve, reject) => {
+    const interval = setInterval(() => {
+        const currentDate = new Date;    
+        const seconds = currentDate.getSeconds()
+        console.log(`Поточні секунди: ${seconds}`)
+      if (seconds % 10 === 0) {    
+        resolve("Поточні секунди кратні 10!")
+        clearInterval(interval)
+      } else if (seconds % 3 === 0) {     
+        reject("Поточні секунди кратні 3!")
+        clearInterval(interval)
+      }
+    }, 1000)
+  })
+.then((value) => console.log(`Проміс зарезолвився з значенням: ${value}`))
+.catch((error) => console.log(`Проміс відхилився з помилкою: ${error}`))
+.finally(() => console.log("Проміс завершено"))
 }
 
 // Викликаємо функцію task7

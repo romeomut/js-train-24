@@ -1,3 +1,4 @@
+console.clear()
 console.log("Завдання: 8 ==============================");
 
 function task8() {
@@ -7,6 +8,14 @@ function task8() {
   // Викликаємо функцію fetchFakeData
   // Якщо проміс виконаний успішно виводимо в консоль дані які він повертає
   // Якщо проміс виконаний з помилкою виводимо в консоль помилку
+
+const fetchFakeData = () => {
+    const fakeData = { name: "John",age: 30}
+    return Promise.resolve(fakeData)
+}
+fetchFakeData()
+.then((result) => console.log(result))
+.catch((error) => console.log(error))
 }
 
 // Викликаємо функцію task8
